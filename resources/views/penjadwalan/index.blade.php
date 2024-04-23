@@ -13,14 +13,14 @@
                 </div>
 
                 <div class="card-body">
-                    <div class="table-responsive pt-3">
+                    <div class="table-responsive">
                         <table class="table table-responsive table-bordered table-striped table-hover">
                             <thead>
                                 <tr class="align-middle text-center">
                                     <th>No</th>
                                     <th>Tanggal</th>
-                                    <th>Mata Kuliah</th>
                                     <th>Waktu Kuliah</th>
+                                    <th>Mata Kuliah</th>
                                     <th>Dosen Pengampu</th>
                                     <th>Jumlah<br>Mahasiswa</th>
                                     <th>Ruang</th>
@@ -33,8 +33,8 @@
                                     <tr>
                                         <td class="text-center">{{ $no }}</td>
                                         <td>{{ \Carbon\Carbon::parse($row->hari)->format('d F Y') }}</td>
-                                        <td>{{ $row->mata_kuliah }}</td>
                                         <td class="text-center">{{ \Carbon\Carbon::parse($row->waktu_mulai)->format('H:i') }} - {{ \Carbon\Carbon::parse($row->waktu_selesai)->format('H:i') }}</td>
+                                        <td>{{ $row->mata_kuliah }}</td>
                                         <td>{{ $row->dosen_pengampu }}</td>
                                         <td class="text-center">{{ $row->jumlah_mahasiswa }}</td>
                                         <td class="text-center">{{ $row->ruang }}</td>
@@ -58,4 +58,5 @@
     </div>
 
     @include('penjadwalan.modals.add')
+    @include('penjadwalan.modals.edit-delete')
 @endsection
