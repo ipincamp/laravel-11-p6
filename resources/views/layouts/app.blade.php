@@ -99,27 +99,29 @@
             {{-- !Body --}}
             <main class="row">
                 {{-- *Sidebar --}}
-                <div class="col-md-2">
-                    <div class="list-group mt-3">
-                        <a href="{{ route('home') }}"
-                            class="list-group-item list-group-item-action {{ request()->routeIs('home') ? 'active' : '' }}">
-                            <i class="fas fa-home"></i> <span class="d-none d-sm-inline">Home</span>
-                        </a>
-                        <a href="{{ route('data-mahasiswa') }}"
-                            class="list-group-item list-group-item-action {{ request()->routeIs('data-mahasiswa') ? 'active' : '' }}">
-                            <i class="fas fa-users"></i> <span class="d-none d-sm-inline">Data Mahasiswa</span>
-                        </a>
-                        <a href="{{ route('jadwal-kuliah') }}"
-                            class="list-group-item list-group-item-action {{ request()->routeIs('jadwal-kuliah') ? 'active' : '' }}">
-                            <i class="fas fa-calendar-alt"></i> <span class="d-none d-sm-inline">Jadwal
-                                Perkuliahan</span>
-                        </a>
+                @auth()
+                    <div class="col-md-2 border-end">
+                        <div class="list-group mt-3">
+                            <a href="{{ route('home') }}"
+                                class="list-group-item list-group-item-action {{ request()->routeIs('home') ? 'active' : '' }}">
+                                <i class="fas fa-home"></i> <span class="d-none d-sm-inline">Home</span>
+                            </a>
+                            <a href="{{ route('data-mahasiswa') }}"
+                                class="list-group-item list-group-item-action {{ request()->routeIs('data-mahasiswa') ? 'active' : '' }}">
+                                <i class="fas fa-users"></i> <span class="d-none d-sm-inline">Data Mahasiswa</span>
+                            </a>
+                            <a href="{{ route('jadwal-kuliah') }}"
+                                class="list-group-item list-group-item-action {{ request()->routeIs('jadwal-kuliah') ? 'active' : '' }}">
+                                <i class="fas fa-calendar-alt"></i> <span class="d-none d-sm-inline">Jadwal
+                                    Perkuliahan</span>
+                            </a>
+                        </div>
                     </div>
-                </div>
+                @endauth
                 {{-- *Sidebar --}}
 
                 {{-- *Content --}}
-                <div class="col-md-10">
+                <div class="col-md-{{ Auth::check() ? '10' : '12'; }}">
                     @yield('content')
                 </div>
                 {{-- *Content --}}
@@ -129,7 +131,7 @@
             {{-- !Footer --}}
             <div class="row">
                 <div class="col-md-12">
-                    <footer class="footer mt-auto py-2 bg-light fixed-bottom text-center">
+                    <footer class="footer mt-auto py-2 bg-light fixed-bottom text-center border-top">
                         <div class="container">
                             <span class="text-muted">
                                 &copy; {{ date('Y') }} {{ config('app.name', 'SIAKAD') }}. All rights reserved.
