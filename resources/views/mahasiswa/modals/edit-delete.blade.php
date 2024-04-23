@@ -1,6 +1,6 @@
 @foreach ($data as $i)
     {{-- Edit Modal --}}
-    <div class="modal fade" id="editModal{{ $i->id }}" tabindex="-1" aria-labelledby="editModalLabel"
+    <div class="modal fade" id="editModal{{ $i->nim }}" tabindex="-1" aria-labelledby="editModalLabel"
         aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -15,7 +15,7 @@
                 </div>
 
                 <!-- Form edit data -->
-                <form method="post" action="{{ url('data-mahasiswa/' . $i->id) }}">
+                <form method="post" action="{{ route('edit-data-mahasiswa', $i->nim) }}">
                     @csrf
                     @method('PUT')
 
@@ -55,7 +55,7 @@
     {{-- Edit Modal --}}
 
     {{-- Delete Modal --}}
-    <div class="modal fade" id="deleteModal{{ $i->id }}" tabindex="-1" aria-labelledby="deleteModalLabel"
+    <div class="modal fade" id="deleteModal{{ $i->nim }}" tabindex="-1" aria-labelledby="deleteModalLabel"
         aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -67,7 +67,7 @@
                 </div>
 
                 <!-- Form delete data -->
-                <form method="post" action="{{ url('data-mahasiswa/' . $i->id) }}">
+                <form method="post" action="{{ route('delete-data-mahasiswa', $i->nim) }}">
                     @csrf
                     @method('DELETE')
 

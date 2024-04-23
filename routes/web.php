@@ -13,8 +13,12 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::controller(App\Http\Controllers\MahasiswaController::class)->group(function () {
     Route::get('/data-mahasiswa', 'index')->name('data-mahasiswa');
     Route::post('/data-mahasiswa', 'store')->name('data-mahasiswa');
+    Route::put('/data-mahasiswa/{nim}', 'update')->name('edit-data-mahasiswa');
+    Route::delete('/data-mahasiswa/{nim}', 'destroy')->name('delete-data-mahasiswa');
 });
 Route::controller(App\Http\Controllers\JadwalMataKuliahController::class)->group(function () {
     Route::get('/jadwal-kuliah', 'index')->name('jadwal-kuliah');
     Route::post('/jadwal-kuliah', 'store')->name('jadwal-kuliah');
+    Route::put('/jadwal-kuliah/{id}', 'update')->name('edit-jadwal-kuliah');
+    Route::delete('/jadwal-kuliah/{id}', 'destroy')->name('delete-jadwal-kuliah');
 });

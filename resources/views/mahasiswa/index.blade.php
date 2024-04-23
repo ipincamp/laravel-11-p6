@@ -38,11 +38,11 @@
                                         <td>{{ $row->prodi }}</td>
                                         <td>{{ $row->fakultas }}</td>
                                         <td class="text-center">
-                                            <button type="button" class="btn btn-warning btn-sm m-1" data-bs-toggle="modal" data-bs-target="#editModal{{ $row->id }}">
+                                            <button type="button" class="btn btn-warning btn-sm m-1" data-bs-toggle="modal" data-bs-target="#editModal{{ $row->nim }}">
                                                 <i class="fa fa-edit"></i>
                                             </button>
 
-                                            <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $row->id }}">
+                                            <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $row->nim }}">
                                                 <i class="fa fa-trash"></i>
                                             </button>
                                         </td>

@@ -72,16 +72,21 @@ class MahasiswaController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Mahasiswa $mahasiswa)
+    public function update(Request $request, string $nim)
     {
-        //
+        $data = Mahasiswa::where('nim', $nim);
+        $data->update($request->only(['nama', 'angkatan', 'prodi', 'fakultas']));
+
+        return back();
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Mahasiswa $mahasiswa)
+    public function destroy(string $nim)
     {
-        //
+        Mahasiswa::where('nim', $nim)->delete();
+
+        return back();
     }
 }
