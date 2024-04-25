@@ -22,3 +22,9 @@ Route::controller(App\Http\Controllers\JadwalMataKuliahController::class)->group
     Route::put('/jadwal-kuliah/{id}', 'update')->name('edit-jadwal-kuliah');
     Route::delete('/jadwal-kuliah/{id}', 'destroy')->name('delete-jadwal-kuliah');
 });
+Route::controller(App\Http\Controllers\ProdiController::class)->group(function () {
+    Route::get('/prodi', 'index')->name('prodi');
+    Route::post('/prodi', 'store')->name('prodi');
+    Route::put('/prodi/{id}', 'update')->name('edit-prodi');
+    Route::delete('/prodi/{id}', 'destroy')->name('delete-prodi');
+});
