@@ -74,16 +74,25 @@ class JadwalMataKuliahController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, JadwalMataKuliah $jadwalMataKuliah)
+    public function update(Request $request, string $id)
     {
-        //
+        $data = JadwalMataKuliah::where('id', $id);
+        $data->update([
+            'waktu_mulai' => $request->mulai,
+            'waktu_selesai' => $request->selesai,
+            'ruang' => $request->ruang,
+        ]);
+
+        return back();
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(JadwalMataKuliah $jadwalMataKuliah)
+    public function destroy(string $id)
     {
-        //
+        JadwalMataKuliah::where('id', $id)->delete();
+
+        return back();
     }
 }
